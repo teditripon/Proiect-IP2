@@ -18,12 +18,11 @@ export class FaceApiProvider {
     console.log('Hello FaceApiProvider Provider');
   }
 
-  detectFace(imgData) {
+  detectFace(imgData : Blob) {
 
     let Options = {
       headers: {
-        //"Content-Type": "application/json",
-        "Content-Type":"application/octet-stream",
+        "Content-Type": "application/octet-stream",
         "Ocp-Apim-Subscription-Key": this.FaceApiInfo.subscriptionKey
       },
       params: {
@@ -34,7 +33,7 @@ export class FaceApiProvider {
     }
 
     return new Promise(resolve => {
-      this.http.post(this.FaceApiInfo.uriBase, imgData, Options).subscribe(data => {resolve(data[0]); });
+      this.http.post(this.FaceApiInfo.uriBase, imgData, Options).subscribe(data => { resolve(data[0]); });
     });
   }
 }
