@@ -1,4 +1,22 @@
 page-home {
     background-color: red;
+    text-align: center;
+}
 
+.cordova-camera-capture button {
+    float: left;
+}
+
+img {
+    width: 300px !important;
+    height: 300px;
+}
+
+.ion-card-size {
+    width: 300px;
+    margin: 5px 0px 0px 0px !important;
+}
+
+.lower-row {
+    margin-left: 0px;
 }

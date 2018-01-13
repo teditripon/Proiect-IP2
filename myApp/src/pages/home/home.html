@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Home</ion-title>
+        <ion-title>Mood Doctor</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -8,14 +8,31 @@
     <ion-card>
         <ion-card-content>
 
-            <button (click)="takePicture()">Take a Picture</button>
-           
-            <h3>Latest Picture:</h3>
-         
-              <!-- <div style="width:300px; height:300px"> <img [src]="{{lastSnap}}" *ngIf="lastSnap" /></div> -->
-     
-           
-            <!-- <div style="width:100%; height:100%">{{resdata}}</div> -->
+            <button ion-button (click)="takePicture()"><ion-icon name="camera"></ion-icon>  Take a Picture   </button>
+
+            <ion-grid>
+                <ion-row align-items-center>
+                    <div class="row responsive-sm">
+                        <ion-col col-25 *ngFor="let photo of photos">
+                            <ion-row>
+                                <img [src]="photo.image" *ngIf="lastsnap" />
+                            </ion-row>
+                            <ion-row class="lower-row">
+                                <ion-card class="ion-card-size">
+                                    <ion-card-content>
+                                        <div style="width:100%; height:100%">{{photo.happiness * 100}}%</div>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-row>
+                        </ion-col>
+                    </div>
+                </ion-row>
+            </ion-grid>
+            <div *ngIf="moodMessage">
+                <p>{{moodMessage}}</p>
+                <p>Average happiness is: {{averageMoodScore * 100}}%</p>
+            </div>
+
         </ion-card-content>
     </ion-card>
 </ion-content>
